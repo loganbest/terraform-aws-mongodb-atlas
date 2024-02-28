@@ -1,20 +1,20 @@
 data "mongodbatlas_roles_org_id" "this" {}
 
 data "mongodbatlas_atlas_user" "this" {
-  count = (var.owner != null) ? 1 : 0
+  count    = (var.owner != null) ? 1 : 0
   username = var.owner
 }
 
 resource "mongodbatlas_project" "this" {
-  name   = var.name
-  org_id = data.mongodbatlas_roles_org_id.this.org_id
+  name             = var.name
+  org_id           = data.mongodbatlas_roles_org_id.this.org_id
   project_owner_id = try(data.mongodbatlas_atlas_user.this[0].user_id, null)
 
   dynamic "teams" {
     for_each = var.teams
 
     content {
-      team_id = teams.value.id
+      team_id    = teams.value.id
       role_names = teams.value.roles
     }
   }
@@ -23,7 +23,7 @@ resource "mongodbatlas_project" "this" {
     for_each = var.limits
 
     content {
-      name = limits.key
+      name  = limits.key
       value = limits.value
     }
   }
@@ -35,4 +35,9 @@ resource "mongodbatlas_project" "this" {
   is_performance_advisor_enabled                   = var.enable_performance_advisor
   is_realtime_performance_panel_enabled            = var.enable_realtime_performance_panel
   is_schema_advisor_enabled                        = var.enable_schema_advisor
+}
+
+resource "mongodbatlas_custom_dns_configuration_cluster_aws" "test" {
+  project_id = mongodbatlas_project.this.id
+  enabled    = var.enable_custom_dns
 }
