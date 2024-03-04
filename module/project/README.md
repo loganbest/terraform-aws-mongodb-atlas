@@ -72,5 +72,7 @@ No modules.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_project_id"></a> [project\_id](#output\_project\_id) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

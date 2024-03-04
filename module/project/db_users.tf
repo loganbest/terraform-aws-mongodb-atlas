@@ -1,8 +1,8 @@
 resource "random_password" "this" {
   count = length(var.database_users)
 
-  length           = 16
-  override_special = "#$%&*-_=+[]{}<>"
+  length  = 16
+  special = false
 }
 
 resource "mongodbatlas_database_user" "this" {
