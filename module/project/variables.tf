@@ -72,55 +72,6 @@ variable "enable_custom_dns" {
   default     = false
 }
 
-variable "create_network_container" {
-  description = "(Optional) When true, will create a network peering container."
-  type        = bool
-  default     = false
-}
-
-variable "enable_network_peering" {
-  description = "(Optional) When true, will create network peering via VPC Peering."
-  type        = bool
-  default     = false
-}
-
-variable "enable_privatelink" {
-  description = "(Optional) When true, will create network peering via PrivateLink."
-  type        = bool
-  default     = false
-}
-
-variable "network_container_config" {
-  description = "Properties to configure the Network Container"
-  type = object({
-    atlas_cidr_block = string
-    region           = string
-  })
-  default = null
-}
-
-variable "network_peering_config" {
-  description = "Properties to configure VPC Peering"
-  type = list(object({
-    region          = string
-    vpc_cidr        = string
-    vpc_id          = string
-    account_id      = string
-    route_table_ids = list(string)
-  }))
-  default = []
-}
-
-variable "privatelink_config" {
-  description = "Properties to configure PrivateLink peering"
-  type = object({
-    region          = string
-    vpc_id          = string
-    private_subnets = list(string)
-  })
-  default = null
-}
-
 variable "database_users" {
   description = "Users and their roles to assign to clusters in this project"
   type = list(object({
@@ -136,12 +87,6 @@ variable "database_users" {
     })), [])
   }))
   default = []
-}
-
-variable "ip_allow_list" {
-  description = "IP's to allow to connect to clusters in the project (network peering, direct, etc)"
-  type        = list(string)
-  default     = []
 }
 
 variable "secret_id" {
