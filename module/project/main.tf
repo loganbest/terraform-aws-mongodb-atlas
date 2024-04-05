@@ -41,3 +41,22 @@ resource "mongodbatlas_custom_dns_configuration_cluster_aws" "test" {
   project_id = mongodbatlas_project.this.id
   enabled    = var.enable_custom_dns
 }
+
+resource "mongodbatlas_third_party_integration" "this" {
+  for_each = { for k, v in var.integrations : v.type => v }
+
+  project_id                  = mongodbatlas_project.this.id
+  type                        = lookup(each.value, "type", "WEBHOOK")
+  api_key                     = lookup(each.value, "api_key", null)
+  region                      = lookup(each.value, "region", null)
+  service_key                 = lookup(each.value, "service_key", null)
+  routing_key                 = lookup(each.value, "routing_key", null)
+  url                         = lookup(each.value, "url", null)
+  secret                      = lookup(each.value, "secret", null)
+  microsoft_teams_webhook_url = lookup(each.value, "microsoft_teams_webhook_url", null)
+  user_name                   = lookup(each.value, "user_name", null)
+  password                    = lookup(each.value, "password", null)
+  service_discovery           = lookup(each.value, "service_discovery", null)
+  scheme                      = lookup(each.value, "scheme", null)
+  enabled                     = lookup(each.value, "enabled", null)
+}
