@@ -93,6 +93,7 @@ No modules.
 | [mongodbatlas_custom_dns_configuration_cluster_aws.test](https://registry.terraform.io/providers/mongodb/mongodbatlas/latest/docs/resources/custom_dns_configuration_cluster_aws) | resource |
 | [mongodbatlas_database_user.this](https://registry.terraform.io/providers/mongodb/mongodbatlas/latest/docs/resources/database_user) | resource |
 | [mongodbatlas_project.this](https://registry.terraform.io/providers/mongodb/mongodbatlas/latest/docs/resources/project) | resource |
+| [mongodbatlas_third_party_integration.this](https://registry.terraform.io/providers/mongodb/mongodbatlas/latest/docs/resources/third_party_integration) | resource |
 | [random_password.this](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
 | [aws_secretsmanager_secret_version.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/secretsmanager_secret_version) | data source |
 | [mongodbatlas_atlas_user.this](https://registry.terraform.io/providers/mongodb/mongodbatlas/latest/docs/data-sources/atlas_user) | data source |
@@ -111,6 +112,7 @@ No modules.
 | <a name="input_enable_performance_advisor"></a> [enable\_performance\_advisor](#input\_enable\_performance\_advisor) | (Optional) Flag that indicates whether to enable Performance Advisor and Profiler for the project. If enabled, you can analyze database logs to recommend performance improvements. By default, this flag is set to true. | `bool` | `true` | no |
 | <a name="input_enable_realtime_performance_panel"></a> [enable\_realtime\_performance\_panel](#input\_enable\_realtime\_performance\_panel) | (Optional) Flag that indicates whether to enable Real Time Performance Panel for the project. If enabled, you can see real time metrics from your MongoDB database. By default, this flag is set to true. | `bool` | `true` | no |
 | <a name="input_enable_schema_advisor"></a> [enable\_schema\_advisor](#input\_enable\_schema\_advisor) | (Optional) Flag that indicates whether to enable Schema Advisor for the project. If enabled, you receive customized recommendations to optimize your data model and enhance performance. By default, this flag is set to true. | `bool` | `true` | no |
+| <a name="input_integrations"></a> [integrations](#input\_integrations) | List of maps defining Atlas compatible integrations | `list(map(string))` | `[]` | no |
 | <a name="input_limits"></a> [limits](#input\_limits) | (Optional) Map of project limits. https://www.mongodb.com/docs/atlas/reference/api-resources-spec/#tag/Projects/operation/setProjectLimit | `map(string)` | `{}` | no |
 | <a name="input_name"></a> [name](#input\_name) | (Required) Name of the Atlas Project | `string` | n/a | yes |
 | <a name="input_owner"></a> [owner](#input\_owner) | (Optional) The email address of the project owner. | `string` | `null` | no |
