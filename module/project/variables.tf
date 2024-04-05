@@ -94,3 +94,9 @@ variable "secret_id" {
   type        = string
   default     = null
 }
+
+variable "integrations" {
+  description = "List of maps defining Atlas compatible integrations"
+  type        = list(map(string))
+  default     = []
+}
